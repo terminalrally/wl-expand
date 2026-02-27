@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wl-expand"
+version = "0.1.0"
+description = "Wordlist expansion using semantic similarity for penetration testing"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "GPL-3.0-only"
+authors = [{ name = "terminalrally" }]
+dependencies = [
+    "gensim>=4.3.0",
+    "numpy>=1.24.0",
+    "sentence-transformers>=2.2.0",
+    "torch>=2.0.0",
+]
+
+[project.urls]
+Repository = "https://github.com/terminalrally/wl-expand"
+
+[project.scripts]
+wl-expand = "wl_expand.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["wl_expand*"]
