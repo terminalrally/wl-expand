@@ -1,0 +1,28 @@
+Source: wl-expand
+Section: utils
+Priority: optional
+Maintainer: terminalrally <terminalrally@users.noreply.github.com>
+Build-Depends: debhelper-compat (= 13),
+               dh-python,
+               python3-all,
+               python3-setuptools,
+               pybuild-plugin-pyproject
+Standards-Version: 4.6.2
+Homepage: https://github.com/terminalrally/wl-expand
+Vcs-Git: https://github.com/terminalrally/wl-expand.git
+Vcs-Browser: https://github.com/terminalrally/wl-expand
+Rules-Requires-Root: no
+
+Package: wl-expand
+Architecture: all
+Depends: ${python3:Depends}, ${misc:Depends},
+         python3-gensim,
+         python3-numpy,
+         python3-torch,
+         python3-sentence-transformers
+Description: Wordlist expansion using semantic similarity for penetration testing
+ wl-expand maps seed words to vectors using embedding models (FastText,
+ Word2Vec, GloVe) and finds semantically similar words by cosine distance.
+ Results can be optionally re-ranked with sentence transformers and expanded
+ with lexical mutations (leet-speak, case variants, suffixes, prefixes,
+ keyboard typos) modeled after real credential leak patterns.

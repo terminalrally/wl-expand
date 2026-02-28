@@ -1,0 +1,6 @@
+wl-expand (0.1.1-1) unstable; urgency=low
+
+  * Initial Debian packaging.
+  * Support stdin pipe input.
+
+ -- terminalrally <terminalrally@users.noreply.github.com>  Thu, 27 Feb 2026 00:00:00 +0000
