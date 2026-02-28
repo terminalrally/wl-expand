@@ -17,9 +17,9 @@ Package: wl-expand
 Architecture: all
 Depends: ${python3:Depends}, ${misc:Depends},
          python3-gensim,
-         python3-numpy,
-         python3-torch,
-         python3-sentence-transformers
+         python3-numpy
+Recommends: python3-sentence-transformers,
+            python3-torch
 Description: Wordlist expansion using semantic similarity for penetration testing
  wl-expand maps seed words to vectors using embedding models (FastText,
  Word2Vec, GloVe) and finds semantically similar words by cosine distance.
