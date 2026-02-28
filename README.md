@@ -10,6 +10,7 @@ Input ("seed") words are mapped to vectors in a high-dimensional space using an 
 
 - [ ] Addtl. keyboard layouts (AZERTY, Dvorak, Colemak) for typo mutations
 - [ ] Structured filter query language (e.g. luqum) to replace the comma-separated parser rules
+- [ ] Package for DEB, RPM, and Nix
 
 ## Installation
 
