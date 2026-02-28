@@ -54,11 +54,13 @@ def main():
             "  %(prog)s -k 10 -s 0.6 -n 50 password admin login\n"
             "  %(prog)s -o expanded.txt seeds.txt\n"
             "  %(prog)s --embedding-model word2vec -f 'length>4' password\n"
+            "  cat seeds.txt | %(prog)s\n"
+            "  echo 'password' | %(prog)s --mutate\n"
         ),
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
 
-    parser.add_argument("input", help="Input file or word(s) to expand", nargs="+")
+    parser.add_argument("input", help="Input file or word(s) to expand (reads stdin if omitted)", nargs="*")
 
     parser.add_argument("-c", "--case-sensitive", help="Enable case-sensitive word expansion", action="store_true")
     parser.add_argument("-f", "--filter", help="Filter criteria for expanded words (e.g., 'length>5,starts-with=a')", default="")
@@ -74,6 +76,14 @@ def main():
     parser.add_argument("--sentence-transformer", help="Sentence transformer model for re-ranking", type=Transformer, default=Transformer.DEFAULT)
 
     args = parser.parse_args()
+
+    # Read from stdin if piped and no positional args given
+    if not args.input and not sys.stdin.isatty():
+        args.input = [line.strip() for line in sys.stdin if line.strip()]
+
+    if not args.input:
+        parser.print_usage()
+        exit(1)
 
     # Load seed words
     seed_words = []
